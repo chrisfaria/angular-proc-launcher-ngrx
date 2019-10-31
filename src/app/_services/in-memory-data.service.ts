@@ -24,6 +24,18 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
   genId(procs: Proc[]): number {
-    return procs.length > 0 ? Math.max(...procs.map(hero => hero.id)) + 1 : 11;
+    return procs.length > 0 ? Math.max(...procs.map(proc => proc.id)) + 1 : 11;
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class InMemoryProcessDataService implements InMemoryDbService {
+  createDb() {
+    const procreq = [ 
+      { status: 'OK' }
+    ];
+    return {procreq};
   }
 }
