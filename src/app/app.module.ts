@@ -7,14 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProcListComponent } from './proc-list/proc-list.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ProdCardComponent } from './prod-card/prod-card.component';
 import { InMemoryDataService } from './_services/in-memory-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProcListComponent,
-    ProdCardComponent,
   ],
   imports: [
     BrowserModule,
