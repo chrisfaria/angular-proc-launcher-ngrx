@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
@@ -25,6 +26,6 @@ export class ProcService {
 
   /** GET heroes from the server */
   getHeroes (): Observable<Proc[]> {
-    return this.http.get<Proc[]>(this.procsUrl)
+    return this.http.get<Proc[]>(this.procsUrl).pipe(delay(50));
   }
 }

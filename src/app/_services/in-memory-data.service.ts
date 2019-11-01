@@ -15,7 +15,12 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 11, name: 'PROCESS FIVE', desc: 'Praesent nisl lectus, sagittis eu efficitur id, tincidunt eu lectus. Aliquam est lorem, sodales nec tortor non', process: 'proc5', status: 'last run 6 days ago' },
       { id: 11, name: 'PROCESS SIX', desc: 'Aenean sed aliquet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla iaculis sapien eu dictum iaculis. Quisque nibh erat, euismod at tristique rhoncus, ultrices id nisl', process: 'proc6', status: 'last run 5 days ago' }
     ];
-    return {procs};
+
+    const procreq = [ 
+      { status: 'OK' }
+    ];
+
+    return {procs,procreq};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
@@ -25,17 +30,5 @@ export class InMemoryDataService implements InMemoryDbService {
   // hero id + 1.
   genId(procs: Proc[]): number {
     return procs.length > 0 ? Math.max(...procs.map(proc => proc.id)) + 1 : 11;
-  }
-}
-
-@Injectable({
-  providedIn: 'root',
-})
-export class InMemoryProcessDataService implements InMemoryDbService {
-  createDb() {
-    const procreq = [ 
-      { status: 'OK' }
-    ];
-    return {procreq};
   }
 }

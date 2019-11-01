@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProcListComponent } from './proc-list/proc-list.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { InMemoryDataService, InMemoryProcessDataService } from './_services/in-memory-data.service';
+import { InMemoryDataService } from './_services/in-memory-data.service';
 import { Proc1Component } from './procs/proc1/proc1.component';
 import { Proc2Component } from './procs/proc2/proc2.component';
 import { Proc3Component } from './procs/proc3/proc3.component';
@@ -33,8 +33,7 @@ import { Proc6Component } from './procs/proc6/proc6.component';
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false, delay: 0 }),
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryProcessDataService, { dataEncapsulation: false, delay: 5000 }),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false, delay: 500 }),
     MDBBootstrapModule.forRoot()
   ],
   providers: [],
