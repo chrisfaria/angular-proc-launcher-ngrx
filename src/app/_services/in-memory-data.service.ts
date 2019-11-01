@@ -23,11 +23,11 @@ export class InMemoryDataService implements InMemoryDbService {
     return {procs,procreq};
   }
 
-  // Overrides the genId method to ensure that a hero always has an id.
-  // If the heroes array is empty,
+  // Overrides the genId method to ensure that a procs always has an id.
+  // If the procs array is empty,
   // the method below returns the initial number (11).
-  // if the heroes array is not empty, the method below returns the highest
-  // hero id + 1.
+  // if the procs array is not empty, the method below returns the highest
+  // proc id + 1.
   genId(procs: Proc[]): number {
     return procs.length > 0 ? Math.max(...procs.map(proc => proc.id)) + 1 : 11;
   }

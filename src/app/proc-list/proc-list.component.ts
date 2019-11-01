@@ -23,7 +23,7 @@ export class ProcListComponent implements OnInit {
   // }
 
   getProcs() {
-    this.procService.getHeroes()
+    this.procService.getProcs()
       .subscribe(procs => this.procs = procs);
   }
 

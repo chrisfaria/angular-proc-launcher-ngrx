@@ -20,12 +20,12 @@ export class ProcService {
   //   return PROCS;
   // }
 
-  // getHeroes(): Observable<Proc[]> {
+  // getProcs(): Observable<Proc[]> {
   //   return of(PROCS);
   // }
 
-  /** GET heroes from the server */
-  getHeroes (): Observable<Proc[]> {
+  /** GET procs from the server */
+  getProcs (): Observable<Proc[]> {
     return this.http.get<Proc[]>(this.procsUrl).pipe(delay(50));
   }
 }
