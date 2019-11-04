@@ -10,11 +10,14 @@ import { ProcService } from '@app/_services';
 export class ProcListComponent implements OnInit {
 
   procs: Proc[];
+  message: string;
 
   constructor(private procService: ProcService) { }
 
   ngOnInit() {
+    
     this.getProcs();
+    this.procService.currentMessage.subscribe(message => this.message = message)
   }
 
   // not good, synchronous
@@ -25,6 +28,10 @@ export class ProcListComponent implements OnInit {
   getProcs() {
     this.procService.getProcs()
       .subscribe(procs => this.procs = procs);
+  }
+
+  getStatus() {
+    
   }
 
 }

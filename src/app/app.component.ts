@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProcService } from './_services';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular Proc Launcher (RxJS)';
+
+  constructor(private procService: ProcService){}
+
+  ngOnInit() {
+    this.procService.currentMessage.subscribe(message => this.title = message);
+  }
 }
