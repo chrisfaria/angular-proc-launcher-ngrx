@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcService } from '@app/_services';
+import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 //import { Router, NavigationStart } from '@angular/router';
 //import { Observable } from 'rxjs';
 //import { filter } from 'rxjs/operators';
@@ -14,9 +16,10 @@ export class Proc1Component implements OnInit {
   //@Input() proc: Proc;
   title: any = 'Process One';
   //private state$: Observable<object>;
-  message: string = 'Hello hello';
+  message: string = 'Hello hello 1234';
+  error = '';
 
-  constructor(private procService: ProcService) { }
+  constructor(private procService: ProcService, private router: Router) { }
 
   ngOnInit() {
     // // Get NavigationStart events
@@ -30,7 +33,16 @@ export class Proc1Component implements OnInit {
   {
     
     console.log('process started');
-    this.procService.changeMessage(this.message);
-    //this.procService.postProcess('api/procreq','');
+    //this.procService.changeMessage(this.message);
+    this.procService.postProcess('api/procreq','')
+      .pipe(first())
+      .subscribe(
+          data => {
+              this.router.navigate("/procs");
+          },
+          error => {
+              this.error = error;
+              //this.loading = false;
+          });
   }
 }

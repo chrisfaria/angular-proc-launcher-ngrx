@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { delay } from 'rxjs/operators'
+import { delay, map } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
 
 
@@ -35,16 +35,40 @@ export class ProcService {
   /** GET procs from the server */
   getProcs (): Observable<Proc[]> 
   {
-    return this.http.get<Proc[]>(this.procsUrl).pipe(delay(50));
+    return this.http.get<Proc[]>(this.procsUrl).pipe(
+      delay(50),
+      map(resp => {
+        console.log('test1');
+        console.log(resp);
+        //localStorage.setItem('currentMessage', JSON.stringify(resp));
+        //this.messageSource.next(resp);
+        console.log('test2');
+        return resp;
+      }));
   }
 
-  postProcess(url: string, params)
+  postProcess(url: string, params): Observable<any> 
   {
-    return this.http.post(url, params).pipe(delay(50));
+    // return this.http.get<Proc[]>(this.procsUrl).pipe(
+    //   delay(50),
+    //   map(resp => {
+    //     console.log('test1');
+    //     console.log(resp);
+    //     console.log('test2');
+    //     return resp;
+    //   }));
+    return this.http.get<any>(this.procsUrl+'/11')
+      .pipe(
+        map(resp => {
+          localStorage.setItem('currentMessage', JSON.stringify(resp));
+          this.messageSource.next(resp);
+          //return resp;
+        })/*,
+        delay(3000)*/);
   }
 
   changeMessage(message: string) {
-    localStorage.setItem('currentMessage', JSON.stringify(message));
+    localStorage.setItem('currentMessage', message);
     this.messageSource.next(message)
   }
 }
