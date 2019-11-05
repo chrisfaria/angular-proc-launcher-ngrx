@@ -49,6 +49,17 @@ export class ProcService {
 
   postProcess(url: string, params): Observable<any> 
   {
+    return this.http.get<any>(this.procsUrl).pipe(
+      delay(3000),
+      map(resp => {
+        console.log('test1');
+        console.log(resp);
+        localStorage.setItem('currentMessage', JSON.stringify(resp));
+        this.messageSource.next(resp);
+        console.log('test2');
+        return resp;
+      }));
+
     // return this.http.get<Proc[]>(this.procsUrl).pipe(
     //   delay(50),
     //   map(resp => {
@@ -57,14 +68,16 @@ export class ProcService {
     //     console.log('test2');
     //     return resp;
     //   }));
-    return this.http.get<any>(this.procsUrl+'/11')
-      .pipe(
-        map(resp => {
-          localStorage.setItem('currentMessage', JSON.stringify(resp));
-          this.messageSource.next(resp);
-          //return resp;
-        })/*,
-        delay(3000)*/);
+
+    // return this.http.get<any>(this.procsUrl)//+'/11')
+    //   .pipe(
+    //     map(resp => {
+    //       localStorage.setItem('currentMessage', JSON.stringify(resp));
+    //       this.messageSource.next(resp);
+    //       //return resp;
+    //     })/*,
+    //     delay(3000)*/);
+    
   }
 
   changeMessage(message: string) {
