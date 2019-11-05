@@ -45,10 +45,10 @@ export class Proc1Component implements OnInit {
     
     console.log('process started');
 
-    this.procService.postProcess('api/procreq','proc1')
+    this.procService.postProcess('proc1')
       .subscribe(
           data => {
-              
+              console.log('AABBCC');
           },
           error => {
               this.error = error;

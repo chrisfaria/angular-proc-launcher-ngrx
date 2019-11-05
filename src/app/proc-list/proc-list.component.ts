@@ -17,7 +17,16 @@ export class ProcListComponent implements OnInit {
   ngOnInit() {
     
     this.getProcs();
-    this.procService.currentMessage.subscribe(message => this.message = message)
+    this.procService.currentMessage.subscribe();//procResp => {
+      //this.procs.forEach(proc => console.log(proc.id));});
+      /*{
+      
+        if (proc.process == procResp.id)
+        {
+          proc.status = procResp.status;
+        }
+      });
+    });*///this.message = message)
   }
 
   // not good, synchronous

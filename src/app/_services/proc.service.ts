@@ -4,22 +4,22 @@ import { delay, map, filter } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
 
 
-import { Proc } from '@app/_models';
+import { Proc, ProcResp } from '@app/_models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProcService {
 
-  private messageSource: BehaviorSubject<string>;
+  private messageSource: BehaviorSubject<ProcResp>;
   //private messageSource = new BehaviorSubject('default message');
-  public currentMessage: Observable<string>;
+  public currentMessage: Observable<ProcResp>;
   //currentMessage = this.messageSource.asObservable();
 
-  private procsUrl = 'api/procs';  // URL to web api
+  private procsUrl = 'api';  // URL to web api
 
   constructor(private http: HttpClient) {
-    this.messageSource = new BehaviorSubject<string>(localStorage.getItem('currentMessage'));
+    this.messageSource = new BehaviorSubject<ProcResp>(null);//JSON.parse(localStorage.getItem('currentMessage')));
     this.currentMessage = this.messageSource.asObservable();
   }
 
@@ -35,8 +35,8 @@ export class ProcService {
   /** GET procs from the server */
   getProcs (): Observable<Proc[]> 
   {
-    return this.http.get<Proc[]>(this.procsUrl).pipe(
-      delay(50),
+    return this.http.get<Proc[]>(this.procsUrl + '/procs').pipe(
+      delay(50)/*,
       map(resp => {
         console.log('test1');
         console.log(resp.filter(x => x.process == 'proc1'));
@@ -44,17 +44,24 @@ export class ProcService {
         //this.messageSource.next(resp);
         console.log('test2');
         return resp;
-      }));
+      })*/);
   }
 
-  postProcess(url: string, param: string): Observable<any> 
+  postProcess(procID: string): Observable<ProcResp> 
   {
-    return this.http.get<any>(this.procsUrl).pipe(
-      delay(3000),
-      filter(resp => resp.process == param),
-      map(resp => {
+    const messageKey = 'status-'+procID;
+    const loadingStatus = { id: procID, status: 'Processing...' };
+    this.changeMessage(messageKey,loadingStatus);
+
+    return this.http.get<ProcResp>(this.procsUrl + '/' + procID).pipe(
+      delay(5000),
+      //filter((resp: Proc[]) => resp.process == param),
+      map((resp: ProcResp) => {
         console.log('test1');
-        console.log(resp.process);
+        console.log(resp);
+        this.changeMessage(messageKey, resp);
+        //resp.filter(x => x.process == param)
+        
         //localStorage.setItem('currentMessage', JSON.stringify(resp));
         //this.messageSource.next(resp);
         console.log('test2');
@@ -62,8 +69,8 @@ export class ProcService {
       }));
   }
 
-  changeMessage(message: string) {
-    localStorage.setItem('currentMessage', message);
-    this.messageSource.next(message)
+  changeMessage(messageKey: string, proc: ProcResp) {
+    localStorage.setItem(messageKey, JSON.stringify(proc));
+    this.messageSource.next(proc)
   }
 }

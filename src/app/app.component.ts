@@ -12,6 +12,6 @@ export class AppComponent {
   constructor(private procService: ProcService){}
 
   ngOnInit() {
-    this.procService.currentMessage.subscribe(message => this.title = message);
+    //this.procService.currentMessage.subscribe(message => this.title = message);
   }
 }
