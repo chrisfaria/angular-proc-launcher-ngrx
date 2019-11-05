@@ -45,7 +45,7 @@ export class Proc1Component implements OnInit {
     
     console.log('process started');
 
-    this.procService.postProcess('api/procreq','')
+    this.procService.postProcess('api/procreq','proc1')
       .subscribe(
           data => {
               
@@ -56,18 +56,5 @@ export class Proc1Component implements OnInit {
           });
 
     this.router.navigate(['/procs']);
-
-    //this.procService.changeMessage(this.message);
-
-    // this.procService.postProcess('api/procreq','')
-    //   .pipe(first())
-    //   .subscribe(
-    //       data => {
-    //           this.router.navigate(['/procs']);
-    //       },
-    //       error => {
-    //           this.error = error;
-    //           //this.loading = false;
-    //       });
   }
 }
