@@ -1,12 +1,5 @@
 <div class="card-columns">
     <div class="card text-center" *ngFor="let proc of procs">
-        <div class="card-body">
-            <h5 class="card-title">{{proc.name}}</h5>
-            <p class="card-text">{{proc.desc}}</p>
-            <a routerLink="/procs/{{proc.process}}" [state]="{tracingId: 123}" class="btn btn-outline-secondary btn-block">Configure Process</a>
-        </div>
-        <div class="card-footer text-muted">
-            {{message}}{{proc.status}}
-        </div>
+        <app-proc-list-item [proc]="proc"></app-proc-list-item>
     </div>
 </div>

@@ -1,0 +1,8 @@
+<div class="card-body">
+    <h5 class="card-title">{{proc.name}}</h5>
+    <p class="card-text">{{proc.desc}}</p>
+    <a routerLink="/procs/{{proc.process}}" [state]="{tracingId: 123}" class="btn btn-outline-secondary btn-block">Configure Process</a>
+</div>
+<div class="card-footer text-muted">
+    {{proc.status}}
+</div>

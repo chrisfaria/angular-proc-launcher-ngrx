@@ -17,9 +17,10 @@ export class ProcService {
   //currentMessage = this.messageSource.asObservable();
 
   private procsUrl = 'api';  // URL to web api
+  private procRespInit : ProcResp = { id: '', status: 'Not run yet' };
 
   constructor(private http: HttpClient) {
-    this.messageSource = new BehaviorSubject<ProcResp>(null);//JSON.parse(localStorage.getItem('currentMessage')));
+    this.messageSource = new BehaviorSubject<ProcResp>(this.procRespInit);//JSON.parse(localStorage.getItem('currentMessage')));
     this.currentMessage = this.messageSource.asObservable();
   }
 

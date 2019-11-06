@@ -10,37 +10,11 @@ import { ProcService } from '@app/_services';
 export class ProcListComponent implements OnInit {
 
   procs: Proc[];
-  message: string;
 
   constructor(private procService: ProcService) { }
 
   ngOnInit() {
-    
-    this.getProcs();
-    this.procService.currentMessage.subscribe();//procResp => {
-      //this.procs.forEach(proc => console.log(proc.id));});
-      /*{
-      
-        if (proc.process == procResp.id)
-        {
-          proc.status = procResp.status;
-        }
-      });
-    });*///this.message = message)
-  }
-
-  // not good, synchronous
-  // getProcs(): void {
-  //   this.procs = this.procService.getProcs();
-  // }
-
-  getProcs() {
-    this.procService.getProcs()
-      .subscribe(procs => this.procs = procs);
-  }
-
-  getStatus() {
-    
+    this.procService.getProcs().subscribe(procs => this.procs = procs);
   }
 
 }
