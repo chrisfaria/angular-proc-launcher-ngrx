@@ -42,13 +42,9 @@ export class Proc1Component implements OnInit {
 
   onSubmit()
   {
-    
-    console.log('process started');
-
     this.procService.postProcess('proc1')
       .subscribe(
           data => {
-              console.log('AABBCC');
           },
           error => {
               this.error = error;

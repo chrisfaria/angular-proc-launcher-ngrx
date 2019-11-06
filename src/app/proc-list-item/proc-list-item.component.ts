@@ -10,11 +10,18 @@ import { ProcService } from '@app/_services';
 export class ProcListItemComponent implements OnInit {
 
   @Input() proc: Proc;
+  initialStatus = 'Not run yet';
 
   constructor(private procService: ProcService) { }
 
   ngOnInit() {
-    this.procService.currentMessage.subscribe(procResp => this.proc.status = procResp.status);
+    this.proc.status = this.initialStatus;
+    this.procService.currentMessage.subscribe(procResp => {
+      if(procResp.id == this.proc.process)
+      {
+        this.proc.status = procResp.status;
+      }
+    });
   }
 
 }
