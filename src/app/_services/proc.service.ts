@@ -35,7 +35,7 @@ export class ProcService {
     this.changeMessage(messageKey,loadingStatus);
 
     return this.http.get<ProcResp>(this.procsUrl + '/' + procID).pipe(
-      delay(5000),
+      delay(15000),
       map((resp: ProcResp) => {
         this.changeMessage(messageKey, resp);
         return resp;

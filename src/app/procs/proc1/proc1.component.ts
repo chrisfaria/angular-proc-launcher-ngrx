@@ -15,10 +15,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class Proc1Component implements OnInit {
 
   loginForm: FormGroup;
-  //@Input() proc: Proc;
-  title: any = 'Process One';
-  //private state$: Observable<object>;
-  message: string = 'Hello hello 1234';
+  loading: boolean = false;
+  title = 'Process One';
+  processKey = 'proc1';
   error = '';
 
   constructor(private procService: ProcService, private router: Router, private formBuilder: FormBuilder) { }
@@ -37,18 +36,24 @@ export class Proc1Component implements OnInit {
       gridRadios2: [''],
       gridRadios3: [''],
       gridCheck1: ['']
-  });
+    });
+
+    console.log(this.loading);
   }
 
   onSubmit()
   {
-    this.procService.postProcess('proc1')
+    this.loading = true;
+    console.log(this.loading);
+    this.procService.postProcess(this.processKey)
       .subscribe(
           data => {
+              this.loading = false;
+              console.log('test ' + this.loading);
           },
           error => {
               this.error = error;
-              //this.loading = false;
+              this.loading = false;
           });
 
     this.router.navigate(['/procs']);
