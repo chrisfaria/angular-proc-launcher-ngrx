@@ -23,7 +23,7 @@ export class ProcService {
   }
 
   /** GET procs from the server */
-  getProcs (): Observable<Proc[]> 
+  public getProcs (): Observable<Proc[]> 
   {
     return this.http.get<Proc[]>(this.procsUrl + '/procs');
   }

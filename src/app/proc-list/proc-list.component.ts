@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Proc } from '@app/_models';
-import { ProcService } from '@app/_services';
 import { Store } from '@ngrx/store';
 import { AppState } from '@app/_models/app-state';
 import { Observable } from 'rxjs';
-import { stat } from 'fs';
 import * as procActions from './../actions/proc.actions'
 
 // Smart Component (container in React) component

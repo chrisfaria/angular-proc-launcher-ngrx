@@ -4,6 +4,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store'
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { Proc5Component } from './procs/proc5/proc5.component';
 import { Proc6Component } from './procs/proc6/proc6.component';
 import { procReducer } from './reducers/proc.reducer';
 import { ProcCardsComponent } from './proc-cards/proc-cards.component';
+import { ProcEffects } from './effects/proc.effects';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ProcCardsComponent } from './proc-cards/proc-cards.component';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false, delay: 500 }),
     MDBBootstrapModule.forRoot(),
-    StoreModule.forRoot({ procs: procReducer })
+    StoreModule.forRoot({ procs: procReducer }),
+    EffectsModule.forRoot([ProcEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
