@@ -11,7 +11,7 @@ import { ProcService } from '@app/_services';
 export class ProcCardsComponent implements OnInit {
 
   @Input() procs: Proc[];
-  //initialStatus = 'Not run yet';
+  initialStatus = 'Not run yet';
 
   constructor(private procService: ProcService) { }
 

@@ -16,7 +16,6 @@ import { Proc3Component } from './procs/proc3/proc3.component';
 import { Proc4Component } from './procs/proc4/proc4.component';
 import { Proc5Component } from './procs/proc5/proc5.component';
 import { Proc6Component } from './procs/proc6/proc6.component';
-import { ProcListItemComponent } from './proc-list-item/proc-list-item.component';
 import { procReducer } from './reducers/proc.reducer';
 import { ProcCardsComponent } from './proc-cards/proc-cards.component';
 
@@ -30,7 +29,6 @@ import { ProcCardsComponent } from './proc-cards/proc-cards.component';
     Proc4Component,
     Proc5Component,
     Proc6Component,
-    ProcListItemComponent,
     ProcCardsComponent,
   ],
   imports: [
