@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { Proc4Component } from './procs/proc4/proc4.component';
 import { Proc5Component } from './procs/proc5/proc5.component';
 import { Proc6Component } from './procs/proc6/proc6.component';
 import { ProcListItemComponent } from './proc-list-item/proc-list-item.component';
+import { procReducer } from './reducers/proc.reducer';
+import { ProcCardsComponent } from './proc-cards/proc-cards.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { ProcListItemComponent } from './proc-list-item/proc-list-item.component
     Proc5Component,
     Proc6Component,
     ProcListItemComponent,
+    ProcCardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { ProcListItemComponent } from './proc-list-item/proc-list-item.component
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false, delay: 500 }),
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    StoreModule.forRoot({ procs: procReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

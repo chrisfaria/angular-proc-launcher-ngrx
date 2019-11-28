@@ -1,5 +1,4 @@
-<div class="card-columns">
-    <div class="card text-center" *ngFor="let proc of procs">
-        <app-proc-list-item [proc]="proc"></app-proc-list-item>
-    </div>
-</div>
+<app-proc-cards 
+    [procs]="procs$ | async"
+    >
+</app-proc-cards>
