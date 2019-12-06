@@ -6,15 +6,15 @@
     </h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group row">
-            <label for="inputParam" class="col-sm-2 col-form-label">Parameter</label>
-            <div class="col-sm-10">
+            <label for="inputParam" class="col-sm-3 col-form-label">Parameter</label>
+            <div class="col-sm-9">
                 <input type="text" class="form-control" formControlName="inputParam" placeholder="Enter the required parameter here"
                     >
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputDuration" class="col-sm-2 col-form-label">Duration (Secs)</label>
-            <div class="col-sm-10">
+            <label for="inputDuration" class="col-sm-3 col-form-label">Duration (Secs)</label>
+            <div class="col-sm-9">
                 <input type="number" class="form-control" formControlName="inputDuration"
                     placeholder="How long should this process run for?" 
                         >
@@ -22,8 +22,8 @@
         </div>
         <fieldset class="form-group">
             <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-                <div class="col-sm-10">
+                <legend class="col-form-label col-sm-3 pt-0">Radios</legend>
+                <div class="col-sm-9">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" formControlName="gridRadios1" value="option1"
                             checked>
@@ -32,14 +32,14 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="gridRadios2" value="option2">
-                        <label class="form-check-label" for="gridRadios2">
+                        <input class="form-check-input" type="radio" formControlName="gridRadios1" value="option2">
+                        <label class="form-check-label" for="gridRadios1">
                             Second radio
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="gridRadios3" value="option3">
-                        <label class="form-check-label" for="gridRadios3">
+                        <input class="form-check-input" type="radio" formControlName="gridRadios1" value="option3">
+                        <label class="form-check-label" for="gridRadios1">
                             Third radio
                         </label>
                     </div>
@@ -47,8 +47,8 @@
             </div>
         </fieldset>
         <div class="form-group row">
-            <div class="col-sm-2">Checkbox</div>
-            <div class="col-sm-10">
+            <div class="col-sm-3">Checkbox</div>
+            <div class="col-sm-9">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" formControlName="gridCheck1">
                     <label class="form-check-label" for="gridCheck1">
@@ -58,9 +58,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <button *ngIf="loading" type="submit" class="btn btn-outline-secondary btn-block" disabled>
                     <div >
                         <span class="spinner-border spinner-border-sm mr-1"></span>

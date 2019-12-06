@@ -27,4 +27,8 @@ export class ProcListComponent implements OnInit {
     //this.procs$ = this.procService.getProcs();//.subscribe(procs => this.procs = procs);
     this.store.dispatch(new procActions.LoadProcsAction())
   }
+
+  updateStatus(procID: string) {
+    
+  }
 }
